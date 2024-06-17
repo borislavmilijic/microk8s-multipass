@@ -1,11 +1,13 @@
-```markdown
 # Oneliner (HA) Kubernetes Cluster Setup with Multipass and Microk8s
 
-This Bash script automates the setup of a Kubernetes cluster using Multipass, a lightweight virtual machine manager. It allows you to create a single control plane node + configurable number of worker nodes or a high-availability (HA) cluster with three control plane nodes.
+This Bash script automates the setup of a Kubernetes cluster using Multipass, a lightweight virtual machine manager. 
+It allows you to create a single control plane node + configurable number of worker nodes 
+or a high-availability (HA) cluster with three control plane nodes.
 
 ## Requirements
 
-Before running the script, ensure that you have Multipass installed on your system. Multipass is a command-line tool for launching and managing Ubuntu virtual machines on various platforms.
+Before running the script, ensure that you have Multipass installed on your system. 
+Multipass is a command-line tool for launching and managing Ubuntu virtual machines on various platforms.
 
 ### Installing Multipass on macOS
 
@@ -81,5 +83,3 @@ The script performs the following tasks:
 - Installs Microk8s on all nodes and configures the necessary settings.
 - Joins the worker nodes to the Kubernetes cluster using the join command obtained from the control plane node(s).
 - Displays the list of nodes in the Kubernetes cluster after successful setup.
-
-```
