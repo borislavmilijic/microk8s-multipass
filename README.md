@@ -56,13 +56,13 @@ Multipass is a command-line tool for launching and managing Ubuntu virtual machi
 3. Make the script executable:
 
    ```bash
-   chmod +x script.sh
+   chmod +x quickest-k8s-cluster.sh
    ```
 
 4. Run the script with the `create` option to launch and configure the Kubernetes cluster:
 
    ```bash
-   ./script.sh create
+   ./quickest-k8s-cluster.sh create
    ```
 
    This will launch the instances, configure the control plane and worker nodes, and add the worker nodes to the cluster.
@@ -70,7 +70,7 @@ Multipass is a command-line tool for launching and managing Ubuntu virtual machi
 5. To destroy all instances, run the script with the `destroy` option:
 
    ```bash
-   ./script.sh destroy
+   ./quickest-k8s-cluster.sh destroy
    ```
 
    This will delete all instances created by the script.
