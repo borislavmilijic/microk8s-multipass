@@ -69,9 +69,19 @@ add_nodes() {
   fi
 }
 
+# Function to set active Kubernetes config
+export_kubeconfig() {
+  if [ "$EXPORT_KUBECONFIG" == "true" ]; then
+    mp exec "$CONTROL_PLANE_NAME-1" -- bash -c "microk8s config" > multipass-microk8s-cluster
+    echo "KUBECONFIG exported to $(pwd)/multipass-microk8s-cluster"
+    echo "Now you can set it with export KUBECONFIG=./multipass-microk8s-cluster and use it with kubectl or oc commands"
+  fi
+}
+
 # Function to destroy instances
 destroy_instances() {
   mp delete --purge --all
+  rm -rf "$(pwd)/multipass-microk8s-cluster"
 }
 
 # Check if the 'create' or 'destroy' option is provided
@@ -112,6 +122,9 @@ if [ "$1" == "create" ]; then
     sleep 10
     mp exec "$CONTROL_PLANE_NAME-1" -- bash -c "microk8s kubectl get nodes"
     echo "Kubernetes cluster setup completed successfully!"
+
+    # Export Kubernetes config
+    export_kubeconfig
   else
     echo "Failed to add nodes to the cluster."
     exit 1
